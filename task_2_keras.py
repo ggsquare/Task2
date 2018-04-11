@@ -20,6 +20,8 @@ X_test = testfile._drop_axis(['Id'], axis=1)
 X_train = trainfile._drop_axis(['Id', 'y'], axis=1)
 y_train = trainfile['y']
 
+#This is what I tried before, but was not good enough:
+
 #OneVsOneClassifier with Linear SVC (Linear Support Vector Classification)
 #classifier = OneVsOneClassifier(LinearSVC(random_state=0))
 #classifier = SVC()
@@ -49,7 +51,6 @@ y_pred = classifier.predict(X_test)
 y_pred_class = []
 for y in y_pred:
     y_pred_class.append(np.argmax(y))
-#acc = accuracy_score(y_train, y_pred)
 
 # output results
 d={'Id': testfile['Id'], 'y': y_pred_class}
